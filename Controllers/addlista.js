@@ -11,13 +11,25 @@ function exibirTarefas() {
         const div = document.createElement("div");
         div.className = "tarefa" + (tarefa.completa ? " completa" : "");
 
-        const texto = document.createElement("span");
-        texto.textContent = tarefa.descricao;
-        texto.onclick = () => {
-            tarefa.completa = !tarefa.completa;
+        // Botão redondo de status
+        const btnStatus = document.createElement("button");
+        btnStatus.className = "btn-status" + (tarefa.completa ? " concluida" : "");
+        btnStatus.onclick = () => {
+            if (!tarefa.completa) {
+                if (confirm("Deseja marcar esta tarefa como concluída?")) {
+                    tarefa.completa = true;
+                }
+            } else {
+                if (confirm("Deseja desmarcar esta tarefa?")) {
+                    tarefa.completa = false;
+                }
+            }
             atualizarTarefas();
             exibirTarefas();
         };
+
+        const texto = document.createElement("span");
+        texto.textContent = tarefa.descricao;
 
         const btnEditar = document.createElement("button");
         btnEditar.textContent = "Editar";
@@ -41,12 +53,14 @@ function exibirTarefas() {
             exibirTarefas();
         };
 
+        div.appendChild(btnStatus);
         div.appendChild(texto);
         div.appendChild(btnEditar);
         div.appendChild(btnExcluir);
         lista.appendChild(div);
     });
 }
+
 
 function adicionarTarefa() {
     const input = document.getElementById("novaTarefa");

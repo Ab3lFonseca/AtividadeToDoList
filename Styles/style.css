@@ -23,3 +23,17 @@ button {
 .tarefa:hover {
     background-color: #f0f0f0;
 }
+.btn-status {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: gray;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-status.concluida {
+    background-color: green;
+}
