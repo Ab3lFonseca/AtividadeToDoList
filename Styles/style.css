@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.tarefa {
+    padding: 10px;
+    border: 1px solid #f00000;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.completa {
+    text-decoration: line-through;
+    color: gray;
+}
+
+button {
+    margin-left: 5px;
+}
+
+.tarefa:hover {
+    background-color: #f0f0f0;
+}
