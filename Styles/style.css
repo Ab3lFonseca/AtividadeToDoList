@@ -1,28 +1,78 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
     padding: 20px;
+    min-height: 100vh;
 }
 
-.tarefa {
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+input[type="text"] {
     padding: 10px;
-    border: 1px solid #f00000;
-    margin: 5px 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.completa {
-    text-decoration: line-through;
-    color: gray;
+    width: 60%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
 }
 
 button {
-    margin-left: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff9800;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #e68900;
+}
+
+#listaTarefas {
+    margin-top: 20px;
+}
+
+.tarefa {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.2s, background-color 0.3s;
 }
 
 .tarefa:hover {
-    background-color: #f0f0f0;
+    transform: scale(1.02);
+    background-color: rgba(255, 255, 255, 0.2);
 }
+
+.tarefa span {
+    flex: 1;
+    font-size: 1rem;
+}
+
+.completa span {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+
 .btn-status {
     width: 25px;
     height: 25px;
@@ -30,10 +80,32 @@ button {
     border: none;
     cursor: pointer;
     background-color: gray;
-    margin-right: 10px;
-    transition: background-color 0.3s;
+    margin-right: 15px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-status:hover {
+    transform: scale(1.1);
 }
 
 .btn-status.concluida {
-    background-color: green;
+    background-color: limegreen;
+}
+
+
+.tarefa button {
+    background-color: #2196f3;
+    margin-left: 5px;
+}
+
+.tarefa button:hover {
+    background-color: #1976d2;
+}
+
+.tarefa button:last-child {
+    background-color: #f44336;
+}
+
+.tarefa button:last-child:hover {
+    background-color: #d32f2f;
 }
