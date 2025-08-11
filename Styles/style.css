@@ -13,6 +13,13 @@ body {
     min-height: 100vh;
 }
 
+#inputContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}   
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
