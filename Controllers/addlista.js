@@ -3,7 +3,6 @@ let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
 function atualizarTarefas() {
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
 }
-
 function exibirTarefas() {
     const lista = document.getElementById("listaTarefas");
     lista.innerHTML = "";
@@ -17,6 +16,7 @@ function exibirTarefas() {
             if (!tarefa.completa) {
                 if (confirm("Deseja marcar esta tarefa como concluída?")) {
                     tarefa.completa = true;
+                   
                 }
             } else {
                 if (confirm("Deseja desmarcar esta tarefa?")) {
@@ -31,6 +31,7 @@ function exibirTarefas() {
         texto.textContent = tarefa.descricao;
 
         const btnEditar = document.createElement("button");
+        btnEditar.className = "btn-editar";
         btnEditar.textContent = "Editar";
         btnEditar.onclick = () => {
             const novaDescricao = prompt("Novo nome da tarefa:", tarefa.descricao);
@@ -57,6 +58,12 @@ function exibirTarefas() {
         div.appendChild(btnEditar);
         div.appendChild(btnExcluir);
         lista.appendChild(div);
+        if (tarefa.completa) {
+            btnEditar.disabled = true;
+            btnExcluir.disabled = true;
+                btnEditar.style.opacity = "0.5"; 
+                 btnExcluir.style.opacity = "0.5";
+        }
     });
 }
 
