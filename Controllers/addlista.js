@@ -11,7 +11,6 @@ function exibirTarefas() {
         const div = document.createElement("div");
         div.className = "tarefa" + (tarefa.completa ? " completa" : "");
 
-        // Botão redondo de status
         const btnStatus = document.createElement("button");
         btnStatus.className = "btn-status" + (tarefa.completa ? " concluida" : "");
         btnStatus.onclick = () => {
