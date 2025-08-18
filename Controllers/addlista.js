@@ -1,7 +1,9 @@
 let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
 
 function atualizarTarefas() {
+     if(checarTarefas()) {
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
+     }
 }
 function exibirTarefas() {
     const lista = document.getElementById("listaTarefas");
@@ -26,6 +28,8 @@ function exibirTarefas() {
             atualizarTarefas();
             exibirTarefas();
         };
+
+        
 
         const texto = document.createElement("span");
         texto.textContent = tarefa.descricao;
@@ -60,7 +64,6 @@ function exibirTarefas() {
         lista.appendChild(div);
         if (tarefa.completa) {
             btnEditar.disabled = true;
-            btnExcluir.disabled = true;
                 btnEditar.style.opacity = "0.5"; 
                  btnExcluir.style.opacity = "0.5";
         }
@@ -69,16 +72,20 @@ function exibirTarefas() {
 
 
 function adicionarTarefa() {
+    if(checarTarefas()) {
+       
     const input = document.getElementById("novaTarefa");
-    if (input.value.trim() === "") {
+    if (input.value.trim() === "" ) {
         alert("Erro: não é possível adicionar tarefa vazia!");
         return;
-    }
+    } 
     tarefas.push({ descricao: input.value, completa: false });
     atualizarTarefas();
     input.value = "";
     alert("Tarefa adicionada com sucesso!");
     exibirTarefas();
+    
+}
 }
 
 function limparTarefas() {
@@ -87,6 +94,19 @@ function limparTarefas() {
         atualizarTarefas();
         exibirTarefas();
     }
+}
+
+function checarTarefas() {
+    const input = document.getElementById("novaTarefa");
+    const novaDescricao = input.value.trim();
+
+    for (let i = 0; i < tarefas.length; i++) {
+        if (tarefas[i].descricao === novaDescricao) {
+            alert("Erro: tarefa já existe!");
+            return false;
+        }
+    }
+    return true;
 }
 
 exibirTarefas();
